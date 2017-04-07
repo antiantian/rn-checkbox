@@ -1,0 +1,24 @@
+{
+  "name": "react-native-checkbox",
+  "version": "1.0.0",
+  "description": "a react native checkbox component for android and ios",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antiantian/rn-checkbox.git"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "checkbox"
+  ],
+  "author": "anyutz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/antiantian/rn-checkbox/issues"
+  },
+  "homepage": "https://github.com/antiantian/rn-checkbox#readme"
+}
