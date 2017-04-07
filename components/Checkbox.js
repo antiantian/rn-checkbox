@@ -13,10 +13,10 @@ import {
 } from 'react-native'
 var width=Dimensions.get('window').width;
 var height=Dimensions.get('window').height;
-var array=[];
 export default class CheckBox extends Component{
 	constructor(props){
 	  super(props);
+		this.array=[];
 		this.state={
 			clicked:true,
 			radioInit:this.props.radioInit,
@@ -26,17 +26,17 @@ export default class CheckBox extends Component{
 	click(id,item,clicked){
 		
 	  if(!clicked){	  
-		  for(i=0;i<array.length;i++){
-			  if(id==array[i].id){
-				  array.splice(i,1)
+		  for(i=0;i<this.array.length;i++){
+			  if(id==this.array[i].id){
+				  this.array.splice(i,1)
 			  }
 		  } 
 	  }else{
-		  array.push({id:id,item:item})		  
+		  this.array.push({id:id,item:item})		  
 	  }
 	
 	 this.setState({indexa:id})
-	 this.props.onValueChange(array)
+	 this.props.onValueChange(this.array)
 	}
 	componentDidMount(){		
 			const indexInit=this.props.selectedValue===undefined?'0':this.props.selectedValue;
