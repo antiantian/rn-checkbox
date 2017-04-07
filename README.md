@@ -164,7 +164,6 @@ class CreateAnwser extends Component{
 - style：Outer style
 # Props 
 - options={{id:'selecteId',value:'content',disabled:'selected',checked:'checked'}}  Set corresponding name
-- selectedValue：default id
 - dataOption: data
 
 # Methods
