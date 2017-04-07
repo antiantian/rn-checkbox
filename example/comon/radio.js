@@ -9,7 +9,7 @@ import {
 	Image,
 	ListView,
 } from 'react-native'
-import CheckBox from './Checkbox';
+ import CheckBox from 'react-native-checkbox-master';
 var Dimensions = require('Dimensions');
 var width=Dimensions.get('window').width;
 var height=Dimensions.get('window').height;
