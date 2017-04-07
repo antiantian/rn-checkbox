@@ -137,7 +137,7 @@ class CreateAnwser extends Component{
 }
 ```
 # Show
-<img src="https://github.com/antiantian/radio/blob/master/show.jpg"/>
+<img src="https://github.com/antiantian/rn-checkbox/blob/master/show.png"/>
 # Explain
 - Two ways of using
 
