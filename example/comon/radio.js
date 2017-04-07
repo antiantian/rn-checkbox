@@ -9,7 +9,7 @@ import {
 	Image,
 	ListView,
 } from 'react-native'
- import CheckBox from 'react-native-checkbox-master';
+import CheckBox from 'react-native-checkbox-master';
 var Dimensions = require('Dimensions');
 var width=Dimensions.get('window').width;
 var height=Dimensions.get('window').height;
@@ -88,10 +88,17 @@ export default class RadioModalItem extends Component{
 					    dataOption={datas}
 					    options={{id:'selecteId',value:'content',disabled:'selected',checked:'checked'}}
 						innerStyle={{width:(width-80)/2}}
-						txtColor={'#000000'}
-						noneColor={'#efefef'}
-						selectedValue={'16'}
 						onValueChange={this.onchangeVal.bind(this)}
+						style={{ flexDirection:'row',
+							  flexWrap:'wrap',
+							  alignItems:'flex-start',
+							  flex:1,
+							  backgroundColor:'#ffffff',padding:5,marginTop:10
+							  }} 
+					/>
+					<View><Text>是否选中：{this.state.orangeCheck}</Text></View>
+					<CheckBox
+						onValueChange={(array1)=>{this.setState({orangeCheck:array1.length>0?1:0})}}
 						seledImg={require('./imgs/selected.png')}
 						selImg={require('./imgs/select.png')}
 						selnoneImg={require('./imgs/selectnone.png')}
@@ -102,9 +109,7 @@ export default class RadioModalItem extends Component{
 							  backgroundColor:'#ffffff',padding:5,marginTop:10
 							  }} 
 					>
-					   <Text value="0" disabled="true" checked="true">apple</Text>
 					   <Text value="1"  checked="true">orange</Text>
-					   <Text value="2">purple</Text>
 					</CheckBox>
 				</View>
 
