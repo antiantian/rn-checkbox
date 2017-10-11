@@ -46,12 +46,14 @@ export default class CheckBox extends Component{
 		  	  
 	  }
 	  //修改原数组checked属性 
-	  var pars=this.props.dataOption;
-	  for(let i=0;i<pars.length;i++){
-           if(id===pars[i][this.props.options.id]){
-               pars[i][this.props.options.checked]=clicked
-           }
-	  }
+	  var pars=this.props.dataOption||this.props.children;
+	  if(pars){
+	 	   for(let i=0;i<pars.length;i++){
+	           if(id===pars[i][this.props.options.id]){
+	               pars[i][this.props.options.checked]=clicked
+	           }
+		  }
+	 }
 	 this.setState({indexa:id})
 	 this.props.onValueChange(this.array)
 	}
@@ -144,7 +146,7 @@ class Raio2 extends Component{
         } 
     }
 	render(){
-		imgUrl=this.props.checked?this.props.seledImg||require('./imgs/selected.png'):this.props.selImg||require('./imgs/select.png');
+		imgUrl=this.state.selted?this.props.seledImg||require('./imgs/selected.png'):this.props.selImg||require('./imgs/select.png');
 		imgUrlNone=this.props.selnoneImg||require('./imgs/selectnone.png');
 		return(
 		    <TouchableHighlight
