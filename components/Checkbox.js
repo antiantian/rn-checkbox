@@ -9,7 +9,8 @@ import {
 	TouchableHighlight,
 	Text,
 	Image,
-	Dimensions
+	Dimensions,
+	ToastAndroid
 } from 'react-native'
 var width=Dimensions.get('window').width;
 var height=Dimensions.get('window').height;
@@ -43,6 +44,7 @@ export default class CheckBox extends Component{
 			this.setState({
 				indexa:indexInit
 			})
+			ToastAndroid.show(JSON.stringify(this.props.dataOption), ToastAndroid.SHORT);
 			//this.props.onValueChange(indexInit)
 	}
 	createInner(child,index,props){
@@ -72,6 +74,7 @@ export default class CheckBox extends Component{
 		const that=this;
 		return(
 		 <View {...this.props.style}>
+
 		      {
 				!this.props.dataOption&&React.Children.map(this.props.children,(child,index)=>this.createInner(child,index))
 			  }
@@ -103,6 +106,7 @@ class Raio2 extends Component{
 		
 	}
 	componentDidMount(){
+		 alert(this.props.checked)
 		if(this.props.checked){
 			this.setState({
 				selted:true
@@ -110,6 +114,14 @@ class Raio2 extends Component{
 			this.click(this.props.value,this.props.child,true)
 		}
 	}
+	componentWillReceiveProps(nextProps) {
+         if(this.state.selted!==nextProps.checked){
+            this.setState({
+				selted:this.props.checked
+			})
+			this.click(this.props.value,this.props.child,this.props.checked)
+         }   
+    }
 	render(){
 		imgUrl=this.state.selted?this.props.seledImg||require('./imgs/selected.png'):this.props.selImg||require('./imgs/select.png');
 		imgUrlNone=this.props.selnoneImg||require('./imgs/selectnone.png');
