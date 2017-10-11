@@ -33,9 +33,25 @@ export default class CheckBox extends Component{
 			  }
 		  } 
 	  }else{
-		  this.array.push({id:id,item:item})		  
+	  	   let has=false;
+	  	   for(i=0;i<this.array.length;i++){
+			  if(id==this.array[i].id){
+				  has=true;
+				  break;
+			  }
+		  } 
+          if(!has){
+              this.array.push({id:id,item:item})	
+          }
+		  	  
 	  }
-	
+	  //修改原数组checked属性 
+	  var pars=this.props.dataOption;
+	  for(let i=0;i<pars.length;i++){
+           if(id===pars[i][this.props.options.id]){
+               pars[i][this.props.options.checked]=clicked
+           }
+	  }
 	 this.setState({indexa:id})
 	 this.props.onValueChange(this.array)
 	}
@@ -58,6 +74,7 @@ export default class CheckBox extends Component{
               index={index}
   		      value={values}
               key={index}
+              selAll={this.props.selAll}
 			  initStyle={this.props.innerStyle}
 			  txtColor={this.props.txtColor}
 			  noneColor={this.props.noneColor}
@@ -106,7 +123,7 @@ class Raio2 extends Component{
 		
 	}
 	componentDidMount(){
-		 alert(this.props.checked)
+
 		if(this.props.checked){
 			this.setState({
 				selted:true
@@ -114,16 +131,20 @@ class Raio2 extends Component{
 			this.click(this.props.value,this.props.child,true)
 		}
 	}
+	
 	componentWillReceiveProps(nextProps) {
-         if(this.state.selted!==nextProps.checked){
-            this.setState({
-				selted:this.props.checked
-			})
-			this.click(this.props.value,this.props.child,this.props.checked)
-         }   
+
+        if( nextProps.value===this.props.value){
+        	    if(this.state.selted!==nextProps.checked){
+        	    	  this.setState({
+							selted:nextProps.checked
+						})
+						this.click(this.props.value,this.props.child,nextProps.checked)
+			    }
+        } 
     }
 	render(){
-		imgUrl=this.state.selted?this.props.seledImg||require('./imgs/selected.png'):this.props.selImg||require('./imgs/select.png');
+		imgUrl=this.props.checked?this.props.seledImg||require('./imgs/selected.png'):this.props.selImg||require('./imgs/select.png');
 		imgUrlNone=this.props.selnoneImg||require('./imgs/selectnone.png');
 		return(
 		    <TouchableHighlight
